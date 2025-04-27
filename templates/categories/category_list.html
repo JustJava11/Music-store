@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+    <h2>Жанры</h2>
+
+    {% if user.is_authenticated and user.is_staff %}
+    <div>
+        <a href="{% url 'category_create' %}">Создать Жанр</a>
+    </div>
+    {% endif %}
+
+    <div class="category-container">
+        {% for category in categories %}
+        <div class="category-item">
+            {% if category.image %}
+            <img src="{{ category.image.url }}" alt="{{ category.title }}">
+            {% else %}
+            <img src="https://www.drupal.org/files/project-images/Nothing.jpg" alt="{{ category.title }}">
+            {% endif %}
+            <h5>{{ category.title }}</h5>
+        </div>
+        {% empty %}
+        <div>
+            <p>Пока нет жанров.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .category-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .category-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .category-item {
+        width: 10px;
+        height: 15px;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
