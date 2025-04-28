@@ -2,13 +2,14 @@
 
 {% block main %}
 <div class="container">
-    <h2>{{ category.title }}</h2>
 
     {% if category.image %}
     <img src="{{ category.image.url }}" alt="{{ category.title }}" class="img-fluid" style="max-width: 100%; height: auto;">
     {% else %}
     <img src="https://i.pinimg.com/236x/31/c7/35/31c735b8160001e921aac31b8923201c.jpg" alt="No Image" class="img-fluid" style="max-width: 100%; height: auto;">
     {% endif %}
+
+    <h2>{{ category.title }}</h2>
 
     <div class="mt-4">
         <h4>Описание категории:</h4>
