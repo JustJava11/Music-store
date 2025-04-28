@@ -2,13 +2,7 @@
 
 {% block main %}
 <div class="container my-4">
-    <h2 class="mb-4">Жанры</h2>
-
-    {% if user.is_authenticated and user.is_staff %}
-    <div class="mb-3">
-        <a href="{% url 'category_create' %}" class="btn btn-primary">Создать Жанр</a>
-    </div>
-    {% endif %}
+    <h2 class="mb-4">Категории</h2>
 
     <div class="row">
         {% for category in categories %}
@@ -26,7 +20,7 @@
         </div>
         {% empty %}
         <div class="col-12">
-            <p>Пока нет жанров.</p>
+            <p>Пока нет категорий.</p>
         </div>
         {% endfor %}
     </div>
