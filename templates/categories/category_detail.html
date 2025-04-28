@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+    <h2>{{ category.title }}</h2>
+
+    {% if category.image %}
+    <img src="{{ category.image.url }}" alt="{{ category.title }}" class="img-fluid" style="max-width: 100%; height: auto;">
+    {% else %}
+    <img src="https://i.pinimg.com/236x/31/c7/35/31c735b8160001e921aac31b8923201c.jpg" alt="No Image" class="img-fluid" style="max-width: 100%; height: auto;">
+    {% endif %}
+
+    <div class="mt-4">
+        <h4>Описание категории:</h4>
+        <p>{{ category.description }}</p>
+    </div>
+
+    <h3>Продукты в категории</h3>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.title }}" class="card-img-top" style="max-height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200?text=No+Image" alt="No Image" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.price }}₽</p>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>В этой категории пока нет продуктов.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
