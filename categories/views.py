@@ -1,8 +1,5 @@
 from categories.models import Category
-from categories.forms import CategoryForm
-from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
-from products.models import Product
 
 
 class ListCategoryView(ListView):
@@ -28,6 +25,6 @@ class DetailCategoryView(DetailView):
 
         products = category.products.all()
 
-        context['posts'] = products
+        context['products'] = products
         context['title'] = category.title
         return context

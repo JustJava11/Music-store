@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Creation{% endblock %}
+
+{% block main %}
+<h1>Place an order for {{ product.title }}</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="number" name="quantity" class="form-control" id="quantity" value="{{ form.quantity.value }}" required>
+    {% if form.quantity.errors %}
+    <div class="text-danger">
+      {% for error in form.quantity.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Place Order</button>
+</form>
+
+<p class="mt-4">Product price: ${{ product.price }}</p>
+<p>Available quantity: {{ product.quantity }}</p>
+{% endblock %}

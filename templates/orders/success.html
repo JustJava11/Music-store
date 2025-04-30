@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Successfully Placed{% endblock %}
+
+{% block main %}
+<h1>Your order has been successfully placed!</h1>
+<p>Thank you for your purchase, {{ user.username }}. We will process your order shortly.</p>
+<a href="{% url 'user_orders' %}" class="btn btn-success">Go to My Orders</a>
+{% endblock %}

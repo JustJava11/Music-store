@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="container my-4">
-    <h2 class="mb-4">Категории</h2>
+<div class="container my-5">
+  <h2 class="mb-4 text-center">📂 Categories</h2>
 
-    <div class="row">
-        {% for category in categories %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100">
-                {% if category.image %}
-                <img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.title }}" style="height: 200px; object-fit: cover;">
-                {% else %}
-                <img src="https://i.pinimg.com/236x/31/c7/35/31c735b8160001e921aac31b8923201c.jpg" class="card-img-top" alt="{{ category.title }}" style="height: 200px; object-fit: cover;">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ category.title }}</h5>
-                </div>
-            </div>
+  <div class="row">
+    {% for category in categories %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card h-100 shadow-sm border-0">
+        {% if category.image %}
+        <img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.title }}"
+             style="height: 200px; object-fit: cover;">
+        {% else %}
+        <img src="https://i.pinimg.com/236x/31/c7/35/31c735b8160001e921aac31b8923201c.jpg" class="card-img-top"
+             alt="{{ category.title }}" style="height: 200px; object-fit: cover;">
+        {% endif %}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-center">{{ category.title }}</h5>
+          <a href="{% url 'category_detail' category.pk %}" class="btn btn-outline-primary mt-auto">🔎 View More</a>
         </div>
-        {% empty %}
-        <div class="col-12">
-            <p>Пока нет категорий.</p>
-        </div>
-        {% endfor %}
+      </div>
     </div>
+    {% empty %}
+    <div class="col-12 text-center text-muted">
+      <p>🚫 No categories available yet.</p>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
