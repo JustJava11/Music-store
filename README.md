@@ -18,7 +18,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone (https://github.com/JustJava11/Music-store)
+   git clone https://github.com/JustJava11/Music-store
 
 Перейдите в папку проекта:
 
